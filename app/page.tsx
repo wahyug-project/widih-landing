@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import {
   MessageSquare,
@@ -19,29 +19,11 @@ import {
   Instagram,
   Linkedin,
   Twitter,
+  Menu,
+  X,
 } from "lucide-react";
 
-// ─── Reveal Hook ─────────────────────────────────────────────────────────────
-function useReveal() {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.add("visible");
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-  return ref;
-}
-
+// ─── Reveal Section (Intersection Observer animation) ──────────────────────
 function RevealSection({
   children,
   className = "",
@@ -77,6 +59,9 @@ function RevealSection({
 
 // ─── Navigation ───────────────────────────────────────────────────────────────
 function Nav() {
+  // State untuk mobile menu
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -87,6 +72,7 @@ function Nav() {
           height={40}
           className="h-8 w-auto"
         />
+        {/* Nav links untuk desktop */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted">
           <a href="#layanan" className="hover:text-dark transition-colors">
             Layanan
@@ -98,10 +84,54 @@ function Nav() {
             Testimoni
           </a>
         </div>
-        <a href="#kontak" className="btn-primary text-sm py-2 px-4">
+        {/* Tombol desktop */}
+        <a href="#kontak" className="hidden md:block btn-primary text-sm py-2 px-4">
           Hubungi Kami
         </a>
+        {/* Hamburger button untuk mobile */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="md:hidden p-2 text-dark hover:text-coral transition-colors"
+          aria-label="Toggle menu"
+        >
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
       </div>
+      {/* Mobile menu dropdown */}
+      {mobileMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-b border-gray-100">
+          <div className="flex flex-col gap-1 px-6 py-4">
+            <a
+              href="#layanan"
+              className="py-3 text-sm font-medium text-muted hover:text-dark transition-colors border-b border-gray-50"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Layanan
+            </a>
+            <a
+              href="#manfaat"
+              className="py-3 text-sm font-medium text-muted hover:text-dark transition-colors border-b border-gray-50"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Manfaat
+            </a>
+            <a
+              href="#testimoni"
+              className="py-3 text-sm font-medium text-muted hover:text-dark transition-colors border-b border-gray-50"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Testimoni
+            </a>
+            <a
+              href="#kontak"
+              className="mt-2 btn-primary text-sm py-3 text-center"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Hubungi Kami
+            </a>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
@@ -109,7 +139,7 @@ function Nav() {
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 function Hero() {
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-28 px-6">
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col items-center text-center gap-8">
           <div className="animate-fade-up" style={{ animationDelay: "0ms" }}>
@@ -363,7 +393,7 @@ const testimonials = [
     name: "Budi Santoso",
     role: "Owner, Toko Elektronik Jaya",
     quote:
-      "Grâce à WIDIH, penjualan online kami naik 300% dalam 3 bulan. WhatsApp automation mereka luar biasa!",
+      "Berkat WIDIH, penjualan online kami naik 300% dalam 3 bulan. WhatsApp automation mereka luar biasa!",
     rating: 5,
   },
   {
