@@ -6,7 +6,6 @@ import {
   MessageSquare,
   Globe,
   TrendingUp,
-  Database,
   Zap,
   Users,
   Shield,
@@ -243,14 +242,6 @@ const services = [
       "Strategi marketing digital yang terukur. Dari social media management hingga paid ads yang ROI-driven.",
     tags: ["Social Media", "Google Ads", "Content Strategy"],
   },
-  {
-    icon: Database,
-    color: "steel",
-    title: "System & Database",
-    description:
-      "Sistem manajemen inventori, penjualan, dan customer database. Efisiensi operasional bisnis tanpa ribet.",
-    tags: ["Inventory", "POS System", "CRM"],
-  },
 ];
 
 function Services() {
@@ -272,7 +263,7 @@ function Services() {
           </div>
         </RevealSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {services.map((service, i) => {
             const Icon = service.icon;
             return (
@@ -528,7 +519,7 @@ function CTASection() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="https://wa.me/6281234567890?text=Halo%20WIDIH,%20saya%20tertarik%20dengan%20layanan%20digital"
+                  href="https://wa.me/6285133712657?text=Halo%20WIDIH,%20saya%20tertarik%20dengan%20layanan%20digital"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-coral text-white font-bold rounded-xl hover:bg-coral-dark transition-colors text-base"
@@ -567,7 +558,7 @@ function Footer() {
               alt="WIDIH Logo"
               width={130}
               height={44}
-              className="h-9 w-auto mb-4 brightness-0 invert"
+              className="h-9 w-auto mb-4"
             />
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs mb-6">
               Wibowo Digital Hub — Partner transformasi digital terpercaya
@@ -618,11 +609,6 @@ function Footer() {
                   Digital Marketing
                 </a>
               </li>
-              <li>
-                <a href="#layanan" className="hover:text-coral transition-colors">
-                  System & Database
-                </a>
-              </li>
             </ul>
           </div>
 
@@ -639,8 +625,8 @@ function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-coral" />
-                <a href="tel:+6281234567890" className="hover:text-coral transition-colors">
-                  +62 812 3456 7890
+                <a href="tel:+6285133712657" className="hover:text-coral transition-colors">
+                  +62 851 3371 2657
                 </a>
               </li>
               <li className="flex items-start gap-2">
