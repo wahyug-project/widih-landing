@@ -64,6 +64,7 @@ function Nav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        {/* Left: Logo */}
         <Image
           src="/logo-wdh.png"
           alt="WIDIH Logo"
@@ -71,31 +72,37 @@ function Nav() {
           height={40}
           className="h-8 w-auto"
         />
-        {/* Nav links untuk desktop */}
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted">
-          <a href="#layanan" className="hover:text-dark transition-colors">
-            Layanan
+
+        {/* Right: Hubungi Kami + Hamburger (mobile: close together) */}
+        <div className="flex items-center gap-3">
+          {/* Hubungi Kami - desktop only */}
+          <a href="#kontak" className="hidden md:block btn-primary text-sm py-2 px-4">
+            Hubungi Kami
           </a>
-          <a href="#manfaat" className="hover:text-dark transition-colors">
-            Manfaat
-          </a>
-          <a href="#testimoni" className="hover:text-dark transition-colors">
-            Testimoni
-          </a>
+          {/* Hamburger button untuk mobile */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 text-dark hover:text-coral transition-colors"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
-        {/* Tombol desktop */}
-        <a href="#kontak" className="hidden md:block btn-primary text-sm py-2 px-4">
-          Hubungi Kami
-        </a>
-        {/* Hamburger button untuk mobile */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-dark hover:text-coral transition-colors"
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
       </div>
+
+      {/* Desktop nav links */}
+      <div className="hidden md:flex items-center justify-center gap-8 text-sm font-medium text-muted absolute left-1/2 -translate-x-1/2">
+        <a href="#layanan" className="hover:text-dark transition-colors">
+          Layanan
+        </a>
+        <a href="#manfaat" className="hover:text-dark transition-colors">
+          Manfaat
+        </a>
+        <a href="#testimoni" className="hover:text-dark transition-colors">
+          Testimoni
+        </a>
+      </div>
+
       {/* Mobile menu dropdown */}
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-b border-gray-100">
