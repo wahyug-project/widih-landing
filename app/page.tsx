@@ -174,7 +174,7 @@ function Hero() {
             style={{ animationDelay: "200ms", animationFillMode: "forwards" }}
           >
             Solusi lengkap untuk naiklevel bisnis Anda. Dari WhatsApp
-            Automation hingga System Database, kami bantu UMKM Indonesia
+            Automation, Website, hingga Digital Marketing, kami bantu UMKM Indonesia
             bertransformasi ke era digital.
           </p>
 
