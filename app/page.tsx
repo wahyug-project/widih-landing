@@ -82,7 +82,7 @@ function Nav() {
           {/* Hamburger button untuk mobile */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-dark hover:text-coral transition-colors"
+            className="p-2 text-dark hover:text-coral transition-colors md:hidden"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
