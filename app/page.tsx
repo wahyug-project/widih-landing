@@ -66,7 +66,7 @@ function Nav() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Left: Logo */}
         <Image
-          src="/logo-wdh.png"
+          src="/logo-wdh.jpg"
           alt="WIDIH Logo"
           width={120}
           height={40}
@@ -150,7 +150,7 @@ function Hero() {
         <div className="flex flex-col items-center text-center gap-8">
           <div className="animate-fade-up" style={{ animationDelay: "0ms" }}>
             <Image
-              src="/logo-wdh.png"
+              src="/logo-wdh.jpg"
               alt="WIDIH Logo"
               width={180}
               height={60}
@@ -561,7 +561,7 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-2">
             <Image
-              src="/logo-wdh.png"
+              src="/logo-wdh.jpg"
               alt="WIDIH Logo"
               width={130}
               height={44}
